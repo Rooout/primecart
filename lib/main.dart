@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:primecart/menu.dart';
+import 'package:primecart/screens/menu.dart';
 
 void main() {
   runApp(const MyApp());

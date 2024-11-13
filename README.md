@@ -15,6 +15,7 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+
 Tugas 7
 
 Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget, dan jelaskan perbedaan dari keduanya.
@@ -64,4 +65,86 @@ Warna Berbeda pada Setiap Tombol: Untuk setiap item ItemHomepage, saya memberika
 
 SnackBar: Ketika tombol ditekan, InkWell memicu peristiwa onTap yang menampilkan SnackBar dengan pesan tertentu. Pesan ini berbeda tergantung tombol yang ditekan, memungkinkan feedback diberikan kepada pengguna.
 
+
+Tugas 8
+
+Apa kegunaan const di Flutter? Jelaskan apa keuntungan ketika menggunakan const pada kode Flutter. Kapan sebaiknya kita menggunakan const, dan kapan sebaiknya tidak digunakan?
+const di Flutter digunakan untuk membuat objek yang bersifat immutable atau tidak dapat diubah dan hanya diinisialisasi satu kali pada waktu kompilasi. Artinya, nilai dari objek yang ditandai dengan const tidak akan berubah saat aplikasi berjalan, sehingga menghemat penggunaan memori dan mempercepat waktu rendering.
+
+Keuntungan menggunakan const:
+
+Efisiensi memori: Objek yang ditandai sebagai const disimpan dalam satu lokasi memori yang sama. Objek const hanya dibuat satu kali dan digunakan kembali jika diperlukan, sehingga mengurangi alokasi memori berulang.
+Peningkatan kinerja: Flutter akan lebih cepat merender widget const karena Flutter tahu bahwa nilai objek tersebut tidak akan berubah. Ini meminimalkan perhitungan ulang ketika ada perubahan state.
+Kapan menggunakan const:
+
+Gunakan const pada widget atau objek yang sifatnya statis dan tidak akan berubah selama aplikasi berjalan, seperti teks, ikon, atau widget yang tidak bergantung pada data dinamis.
+Kapan tidak menggunakan const:
+
+Jangan gunakan const untuk objek atau widget yang nilainya perlu berubah selama aplikasi berjalan (misalnya, data yang dipengaruhi oleh interaksi pengguna).
+
+
+Jelaskan dan bandingkan penggunaan Column dan Row pada Flutter. Berikan contoh implementasi dari masing-masing layout widget ini!
+Column dan Row adalah widget yang digunakan untuk mengatur tata letak secara vertikal dan horizontal, berturut-turut.
+
+Column: Mengatur widget dalam arah vertikal (dari atas ke bawah).
+Misalnya, Column berguna saat menampilkan elemen yang tersusun vertikal, seperti form isian data.
+Row: Mengatur widget dalam arah horizontal (dari kiri ke kanan).
+Cocok digunakan untuk menampilkan elemen yang bersebelahan secara horizontal, seperti ikon dan teks pada tombol.
+
+Contoh Implementasi
+// Column
+Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: const [
+    Text("Nama Produk"),
+    TextField(),
+    SizedBox(height: 10),
+    Text("Harga"),
+    TextField(),
+  ],
+)
+
+// Row
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceAround,
+  children: const [
+    Icon(Icons.star, color: Colors.yellow),
+    Text("Rating: 4.5"),
+  ],
+)
+
+Pada contoh di atas:
+Column digunakan untuk menampilkan elemen-elemen form vertikal yang terdiri dari label dan field input.
+Row digunakan untuk menampilkan elemen rating produk secara horizontal dengan ikon dan teks.
+
+
+Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!
+Pada halaman form untuk tugas ini, elemen input yang digunakan adalah:
+
+TextFormField: Digunakan untuk memasukkan data berupa teks (seperti nama produk dan deskripsi).
+ElevatedButton: Tombol untuk menyimpan data yang telah diisi.
+Elemen Input Lain yang Tidak Digunakan:
+
+Checkbox: Untuk memilih antara dua status (aktif atau tidak aktif).
+Radio Button: Untuk memilih satu opsi dari beberapa pilihan.
+Switch: Untuk mengaktifkan atau menonaktifkan suatu fitur.
+Slider: Untuk mengatur nilai dalam rentang tertentu, misalnya intensitas atau volume.
+
+
+Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?
+Untuk menjaga konsistensi gaya visual dalam aplikasi, Flutter mendukung penggunaan tema melalui ThemeData. Tema ini memungkinkan kita mengatur warna, font, ikon, dan gaya visual lainnya agar seragam di seluruh aplikasi.
+
+Mengatur Tema:
+
+Tema diatur di MaterialApp, dengan menggunakan properti theme.
+Anda bisa mendefinisikan skema warna utama, teks, tombol, dan ikon secara terpusat, sehingga tidak perlu diatur ulang di setiap widget.
+
+
+Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?
+Menggunakan navigator yang cara kerjanya seperti stack seperti contoh implementasi pada tutorial
+
+Metode Navigasi yang Umum:
+Push: Untuk menambahkan halaman baru di atas halaman saat ini.
+PushReplacement: Untuk menggantikan halaman saat ini dengan halaman baru, tanpa menambahkannya ke tumpukan.
+Pop: Untuk kembali ke halaman sebelumnya dengan menghapus halaman saat ini dari tumpukan.
 

@@ -5,9 +5,6 @@ import 'package:primecart/widgets/item_card.dart';
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
 
-  final String npm = '5000000000'; // NPM
-  final String name = 'Gedagedi Gedagedago'; // Nama
-  final String className = 'PBP S'; // Kelas
 
   final List<ItemHomepage> items = [
     ItemHomepage(
@@ -55,15 +52,6 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Row untuk menampilkan 3 InfoCard secara horizontal.
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                InfoCard(title: 'NPM', content: npm),
-                InfoCard(title: 'Name', content: name),
-                InfoCard(title: 'Class', content: className),
-              ],
-            ),
 
             // Memberikan jarak vertikal 16 unit.
             const SizedBox(height: 16.0),

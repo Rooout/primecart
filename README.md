@@ -148,3 +148,30 @@ Push: Untuk menambahkan halaman baru di atas halaman saat ini.
 PushReplacement: Untuk menggantikan halaman saat ini dengan halaman baru, tanpa menambahkannya ke tumpukan.
 Pop: Untuk kembali ke halaman sebelumnya dengan menghapus halaman saat ini dari tumpukan.
 
+
+Tugas 9
+
+
+Jelaskan mengapa kita perlu membuat model untuk melakukan pengambilan ataupun pengiriman data JSON? Apakah akan terjadi error jika kita tidak membuat model terlebih dahulu?
+
+
+
+Jelaskan fungsi dari library http yang sudah kamu implementasikan pada tugas ini
+
+
+
+Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter
+
+
+
+Jelaskan mekanisme pengiriman data mulai dari input hingga dapat ditampilkan pada Flutter.
+
+
+
+Jelaskan mekanisme autentikasi dari login, register, hingga logout. Mulai dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+
+
+
+Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+
+

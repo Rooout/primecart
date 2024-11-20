@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:primecart/screens/list_product.dart';
 import 'package:primecart/screens/menu.dart';
 import 'package:primecart/screens/productentry_form.dart';
 
@@ -51,13 +52,22 @@ class LeftDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.add),
             title: const Text('Tambah Produk'),
-            // Bagian redirection ke MoodEntryFormPage
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const ProductEntryFormPage(),
                 ),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.add_reaction_rounded),
+            title: const Text('Lihat Daftar Produk'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProductPage()),
               );
             },
           ),

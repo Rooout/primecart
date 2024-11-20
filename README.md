@@ -153,25 +153,100 @@ Tugas 9
 
 
 Jelaskan mengapa kita perlu membuat model untuk melakukan pengambilan ataupun pengiriman data JSON? Apakah akan terjadi error jika kita tidak membuat model terlebih dahulu?
-
+Representasi Data: Model digunakan untuk merepresentasikan struktur data secara terorganisir. Dengan model, data yang dikirim atau diterima dapat dimanipulasi sesuai dengan kebutuhan aplikasi.
+Validasi dan Integritas: Model membantu memvalidasi data yang masuk ke sistem agar sesuai dengan aturan, seperti memastikan harga produk harus berupa angka positif atau nama tidak boleh kosong.
+Kesesuaian dengan Database: Django memanfaatkan ORM (Object-Relational Mapping) untuk membuat tabel di database berdasarkan model. Tanpa model, Django tidak dapat memahami struktur data yang akan digunakan.
+Serialisasi Data: Untuk mengirimkan data dalam format JSON, model membantu proses serialisasi (mengubah objek Python menjadi JSON) dengan lebih mudah.
+Jika Tidak Membuat Model
+Akan terjadi error atau kesulitan dalam mengatur data:
+Database Error: Django tidak dapat membuat tabel atau menyimpan data tanpa model.
+Kesalahan Struktur JSON: Tanpa model, struktur data yang dikirimkan kemungkinan besar tidak konsisten.
+Validasi Manual: Anda perlu memvalidasi setiap atribut secara manual, yang memperbesar risiko kesalahan.
 
 
 Jelaskan fungsi dari library http yang sudah kamu implementasikan pada tugas ini
+Library http digunakan untuk melakukan request HTTP (GET, POST, PUT, DELETE, dll.) dari aplikasi Flutter ke server. Pada tugas ini, fungsi utama http adalah:
 
+Mengambil Data (GET): Library http digunakan untuk mengirim permintaan GET ke endpoint Django untuk mendapatkan data JSON produk.
+Mengirim Data (POST): Library ini juga digunakan untuk mengirim data dari Flutter ke Django, seperti data login, registrasi, atau penambahan produk.
+Pengelolaan Response: Library mempermudah pengelolaan response dari server, seperti decoding JSON yang diterima atau menangani error dari server.
 
 
 Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter
+CookieRequest adalah class yang digunakan untuk mengelola autentikasi berbasis cookie pada aplikasi Flutter. Fungsi utamanya adalah:
 
+Menyimpan Cookie: Setelah login berhasil, server Django mengirimkan cookie autentikasi. Cookie ini disimpan oleh CookieRequest dan digunakan untuk autentikasi di request berikutnya.
+Mengelola Request: CookieRequest mempermudah pengiriman request HTTP (GET, POST, dll.) dengan menambahkan header yang diperlukan, seperti cookie autentikasi.
+Memastikan Otentikasi: Dengan adanya CookieRequest, aplikasi Flutter dapat menjaga sesi pengguna tetap aktif tanpa perlu login ulang.
+Mengapa Instance CookieRequest Dibagikan
+State Global: Cookie autentikasi harus dapat diakses oleh semua komponen aplikasi Flutter, seperti saat mengambil data produk atau melakukan logout.
+Pengelolaan Sesi: Dengan berbagi instance CookieRequest, semua request di aplikasi akan menggunakan cookie yang sama, memastikan sesi tetap valid.
 
 
 Jelaskan mekanisme pengiriman data mulai dari input hingga dapat ditampilkan pada Flutter.
-
+Langkah-Langkah
+Input Data: Pengguna memasukkan data pada form di aplikasi Flutter (misalnya, form untuk menambahkan produk).
+Request ke Django:
+Data dari form dikirimkan menggunakan metode POST melalui CookieRequest atau library http.
+Data dikirim dalam format JSON ke endpoint Django.
+Proses di Server Django:
+Django menerima request dan memvalidasi data yang dikirimkan.
+Data disimpan ke database menggunakan model Django.
+Response JSON:
+Django mengirimkan response JSON, misalnya data produk yang baru ditambahkan.
+Tampilkan di Flutter:
+Flutter menerima response JSON, melakukan decoding, dan mengubahnya menjadi objek Dart (misalnya, objek Product).
+Data ditampilkan di widget Flutter menggunakan FutureBuilder atau mekanisme lain.
 
 
 Jelaskan mekanisme autentikasi dari login, register, hingga logout. Mulai dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
-
+Login
+Input:
+Pengguna memasukkan username dan password di Flutter.
+Data dikirim melalui POST ke endpoint /login/.
+Proses di Django:
+Django memverifikasi username dan password.
+Jika valid, server mengirimkan cookie autentikasi dalam response.
+Response ke Flutter:
+Cookie autentikasi disimpan oleh CookieRequest.
+Setelah login berhasil, Flutter mengarahkan pengguna ke halaman utama.
+Register
+Input:
+Pengguna memasukkan data registrasi di Flutter (username, email, password, dll.).
+Data dikirimkan ke endpoint /register/ melalui POST.
+Proses di Django:
+Django memvalidasi data dan membuat akun baru di database.
+Server mengirimkan pesan sukses jika registrasi berhasil.
+Response ke Flutter:
+Flutter menampilkan pesan sukses atau error, sesuai dengan response dari server.
+Logout
+Request Logout:
+Flutter mengirimkan request ke endpoint /logout/.
+Proses di Django:
+Django menghapus cookie autentikasi di sisi server.
+Response ke Flutter:
+Flutter menghapus sesi pengguna dan mengarahkan pengguna ke halaman login.
 
 
 Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+Langkah Implementasi
+Persiapan Django:
 
+Membuat model Product untuk menyimpan data produk.
+Menambahkan endpoint untuk login, register, logout, dan manipulasi data JSON.
+Menggunakan serializer untuk memproses data ke/dari JSON.
+Membuat Flutter Project:
+
+Membuat widget dasar, seperti halaman login, register, dan daftar produk.
+Menambahkan pbp_django_auth untuk mengelola autentikasi berbasis cookie.
+Implementasi Fungsi HTTP di Flutter:
+
+Menggunakan http atau CookieRequest untuk melakukan request ke server Django.
+Memastikan data JSON yang diterima dapat diubah menjadi objek Dart.
+Testing:
+
+Memastikan setiap fitur (login, register, logout, tambah produk) berjalan sesuai alur, dari input hingga tampil di Flutter.
+Refactor:
+
+Membersihkan kode dan memastikan konsistensi struktur data di Django dan Flutter.
 
